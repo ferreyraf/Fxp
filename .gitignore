@@ -1,0 +1,7 @@
+# Ignore venv
+.venv
+
+#Ignore automatic files 
+
+# Python cache
+__pycache__/
