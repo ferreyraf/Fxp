@@ -49,11 +49,14 @@ def int2fxp(
         Value_o_tmp = Value_o
         
         if formate == "DEC" :
-            print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato DEC: {Value_o}")
+            # print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato DEC: {Value_o}")
+            dg.info(f"Valor convertido final formato DEC: {Value_o}")
         elif formate == "BIN":
             Value_o = tls.dec2bin(Value_o_tmp,NB_out)
-            print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato BIN: {Value_o}")
+            # print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato BIN: {Value_o}")
+            dg.info(f"Valor convertido final formato BIN: {Value_o}")
         elif formate == 'HEX':
             Value_o = tls.dec2hex(Value_o_tmp,NB_out)
-            print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato HEX: {Value_o}")
+            # print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Valor convertido final formato HEX: {Value_o}")
+            db.info(f"Valor convertido final formato HEX: {Value_o}")
     

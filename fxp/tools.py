@@ -1,5 +1,7 @@
 import math as mh
 from colorama import Fore, Style, init
+import fxp.debug as dg
+
 init(autoreset=True)
 # Flag que indica para que lado satura el resultado
 def sat_over_signed(Value : int,nbf : int , max : int, min : int, show : int = 0):
@@ -15,18 +17,18 @@ def sat_over_signed(Value : int,nbf : int , max : int, min : int, show : int = 0
     if Value_tmp > max:
         flag = 1
         if show == 1 :
-            print(Fore.YELLOW + "[WARM]" + Style.RESET_ALL,f"Se produce overflow positivo {max}")
+            dg.warn(f"Se produce overflow positivo {max}")
         Value = max
     elif Value_tmp < min :
         flag = -1
         if show == 1 :
             print(f"#   [WARM]    Se produce overflow negativo {min}")
-            print(Fore.YELLOW + "[WARM]" + Style.RESET_ALL, f"Se produce overflow negativo {min}")
+            dg.warn( f"Se produce overflow negativo {min}")
         Value_tmp = min
     else :
         flag = 0
         if show == 1 :
-            print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, "No hay overflow")
+            dg.info( "No hay overflow")
     return Value_tmp, flag
 
 def sat_over_usigned(Value: int, max: int, show: int = 0):
@@ -37,17 +39,17 @@ def sat_over_usigned(Value: int, max: int, show: int = 0):
     if Value > max:
         flag = 1
         if show:
-            print(Fore.YELLOW + "[WARM]" + Style.RESET_ALL,f"Se produce overflow positivo {max}")
+            dg.warn(f"Se produce overflow positivo {max}")
         Value = max
     elif Value < 0:
         flag = -1
         if show:
-            print(Fore.YELLOW + "[WARM]" + Style.RESET_ALL,f"Underflow (valor negativo en unsigned), se fuerza a 0")
+            dg.warn(f"Underflow (valor negativo en unsigned), se fuerza a 0")
         Value = 0
     else:
         flag = 0
         if show:
-            print(Fore.GREEN + "[INFO]" + Style.RESET_ALL,f" No hay overflow")
+            dg.info(f" No hay overflow")
     return Value, flag
 
 # Representa todos los datos de informacion de partida
@@ -55,20 +57,20 @@ def show_init(Value : int ,NB_input : int, NBF_input : int, Mode : int):
     """
     Visualiza de forma ordenada los valores de entrada del numero a convertir
     """        
-    print(f"=================================================================")
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Informacion de Partida")  
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Representacion S({NB_input},{NBF_input})")
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Rango entero equivalente {-2**(NB_input-1)} a {2**(NB_input-1)-1}")
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL, f"Rango REAL equivalente {-2**(NB_input-NBF_input-1)} a {2**(NB_input-NBF_input-1)-2**(-NBF_input)}")
+    print(f"=======================================================================================")  
+    dg.info("Informacion de Partida")
+    dg.info(f"Representacion S({NB_input},{NBF_input})")
+    dg.info(f"Rango entero equivalente {-2**(NB_input-1)} a {2**(NB_input-1)-1}")
+    dg.info(f"Rango REAL equivalente {-2**(NB_input-NBF_input-1)} a {2**(NB_input-NBF_input-1)-2**(-NBF_input)}")
 
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL,f"Valor Inicial en entero equivalente {Value}")
-    print(Fore.GREEN + "[INFO]" + Style.RESET_ALL,f"Valor REAL  equivalente {Value*(2**-NBF_input)}")
-    print(f"=================================================================")
+    dg.info(f"Valor Inicial en entero equivalente {Value}")
+    dg.info(f"Valor REAL  equivalente {Value*(2**-NBF_input)}")
+    print(f"=======================================================================================")
     if Mode == 0:
-        print(Fore.GREEN + "[INFO]" + Style.RESET_ALL,f"Aplica Truncado")
+        dg.info(f"Aplica Truncado")
     else :
-        print(Fore.GREEN + "[INFO]" + Style.RESET_ALL,f"Aplica Redondeo   ")
-    print(f"=================================================================")
+        dg.info(f"Aplica Redondeo   ")
+    print(f"=======================================================================================")
 
 # Representa todos los datos de informacion de salida
 def show_done():           
