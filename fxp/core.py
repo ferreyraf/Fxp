@@ -1,4 +1,5 @@
 import fxp.tools as tls
+import fxp.debug as dg
 from colorama import Fore, Style, init
 init(autoreset=True)
 
@@ -28,7 +29,8 @@ def int2fxp(
     """
 
     if (not Signed) and (Value < 0):
-        print(Fore.RED + "[ERROR]" + Style.RESET_ALL,f"Valor negativo en número sin signo")
+        # print(Fore.RED + "[ERROR]" + Style.RESET_ALL,f"Valor negativo en número sin signo")
+        dg.err("Valor negativo en número sin signo")
         return
     if (show):
         tls.show_init(Value,NB_in,NBF_in,Mod)

@@ -20,5 +20,3 @@ Val = [Val_a,Val_b]
  
 for ii in range(2):
     X = fxp.int2fxp(Val[ii],1,NB_INT[ii],NBF_INT[ii],NB_OUT,NBF_OUT,1,show=1,formate='BIN')
-
-
