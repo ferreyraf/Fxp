@@ -1,7 +1,7 @@
 import fxp.core as fxp
 import random as rd
 # import inspect # para mostrar lineas en el codigo
-import fxp.debug as p
+import fxp.debug as dg
 
 NB_INT1   =   16
 NBF_INT1  =   15
@@ -19,4 +19,6 @@ NBF_INT   =   [NBF_INT1,NBF_INT2]
 Val = [Val_a,Val_b]
  
 for ii in range(2):
+    print("\n\n")
+    dg.debug(f"Value_converter {ii}")
     X = fxp.int2fxp(Val[ii],1,NB_INT[ii],NBF_INT[ii],NB_OUT,NBF_OUT,1,show=1,formate='BIN')
